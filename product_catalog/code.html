@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BLUE - Premium Cosmetics Catalog</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-error-container": "#93000a",
+                "on-primary-container": "#6f88ad",
+                "secondary-fixed-dim": "#a7c8ff",
+                "on-background": "#191c1d",
+                "on-primary-fixed": "#001c3a",
+                "on-primary": "#ffffff",
+                "on-tertiary-fixed": "#001f29",
+                "on-primary-fixed-variant": "#2f486a",
+                "surface-container": "#edeeef",
+                "on-secondary": "#ffffff",
+                "surface-container-highest": "#e1e3e4",
+                "on-surface-variant": "#43474e",
+                "on-secondary-fixed": "#001b3b",
+                "surface-container-lowest": "#ffffff",
+                "primary-container": "#001f3f",
+                "on-secondary-container": "#002e5d",
+                "background": "#f8f9fa",
+                "on-tertiary": "#ffffff",
+                "surface-dim": "#d9dadb",
+                "surface-container-low": "#f3f4f5",
+                "secondary-container": "#4597fe",
+                "inverse-surface": "#2e3132",
+                "primary": "#000613",
+                "inverse-primary": "#afc8f0",
+                "on-tertiary-container": "#2891b2",
+                "surface-tint": "#476083",
+                "surface-bright": "#f8f9fa",
+                "error-container": "#ffdad6",
+                "tertiary-fixed": "#baeaff",
+                "on-surface": "#191c1d",
+                "on-error": "#ffffff",
+                "tertiary-container": "#00222d",
+                "surface-container-high": "#e7e8e9",
+                "on-secondary-fixed-variant": "#004788",
+                "inverse-on-surface": "#f0f1f2",
+                "secondary": "#005eb2",
+                "error": "#ba1a1a",
+                "on-tertiary-fixed-variant": "#004d62",
+                "surface-variant": "#e1e3e4",
+                "surface": "#f8f9fa",
+                "outline-variant": "#c4c6cf",
+                "primary-fixed-dim": "#afc8f0",
+                "outline": "#74777f",
+                "secondary-fixed": "#d5e3ff",
+                "primary-fixed": "#d4e3ff",
+                "tertiary": "#00070b",
+                "tertiary-fixed-dim": "#76d2f6"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "xxl": "80px",
+                "sm": "8px",
+                "container-max": "1280px",
+                "margin-mobile": "16px",
+                "lg": "24px",
+                "xs": "4px",
+                "md": "16px",
+                "gutter": "24px",
+                "unit": "4px",
+                "xl": "48px"
+            },
+            "fontFamily": {
+                "body-md": ["Inter"],
+                "label-sm": ["Inter"],
+                "headline-lg-mobile": ["Playfair Display"],
+                "headline-md": ["Playfair Display"],
+                "headline-lg": ["Playfair Display"],
+                "label-md": ["Inter"],
+                "display-lg": ["Playfair Display"],
+                "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .product-card-hover:hover .action-buttons {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24 md:pb-0">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-sm shadow-secondary/5 h-16">
+<div class="flex justify-between items-center px-md h-full w-full max-w-container-max mx-auto">
+<button class="text-secondary dark:text-secondary-fixed-dim hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md tracking-widest text-primary dark:text-primary-fixed">BLUE</h1>
+<button class="text-secondary dark:text-secondary-fixed-dim hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-xxl px-margin-mobile md:px-xl max-w-container-max mx-auto">
+<!-- Hero Section / Title -->
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-sm">The Catalog</h2>
+<p class="font-body-md text-on-surface-variant max-w-2xl">Discover our curated selection of high-performance skincare, artistry makeup, and evocative fragrances designed for the modern connoisseur.</p>
+</div>
+<!-- Filter & Category Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-lg mb-xl border-b border-outline-variant/30 pb-md">
+<div class="flex gap-md overflow-x-auto hide-scrollbar whitespace-nowrap">
+<button class="font-label-md text-label-md px-lg py-sm rounded-full bg-primary text-on-primary transition-all shadow-md shadow-primary/10">All Products</button>
+<button class="font-label-md text-label-md px-lg py-sm rounded-full text-on-surface-variant hover:bg-surface-container-high transition-all">Skincare</button>
+<button class="font-label-md text-label-md px-lg py-sm rounded-full text-on-surface-variant hover:bg-surface-container-high transition-all">Makeup</button>
+<button class="font-label-md text-label-md px-lg py-sm rounded-full text-on-surface-variant hover:bg-surface-container-high transition-all">Fragrance</button>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-label-sm text-label-sm text-outline">SORT BY:</span>
+<select class="bg-transparent border-none focus:ring-0 font-label-md text-label-md text-secondary cursor-pointer">
+<option>Recommended</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Newest First</option>
+</select>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-gutter gap-y-xl">
+<!-- Product Card 1 -->
+<div class="group product-card-hover relative flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container overflow-hidden rounded-lg mb-md">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A high-end glass serum bottle with a minimalist white label, set against a soft, cream-colored backdrop with dramatic architectural shadows. The lighting is crisp and cool, highlighting the crystal-clear fluid inside the bottle. Professional product photography for a luxury cosmetics brand using a blue and off-white color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCteCJQKL0J5WslVC6AobnsVdawAYSNTkbY8rtpPD9Tp_HtbV-tcv69ApK8HcR7dUYObjU6y0xk5TzYXCJU8DVABFEa2uHB9kZSolN8MngiOPls2EDzCEl0wEBJAyjQ3u25Hh8pCFdfulixWZAcQvNPnD4h43SbnxKjL2VFtdTY3H5yEwL3uxV1DaZGTj0pk7vEhhs3r5HzOfXHqMJipM48_14QgPx6fYI_YlHTRWS2TOGByPL3K2n1IHKH0wwO-ZGfF3gVEj6oBHX9"/>
+<!-- Badges -->
+<div class="absolute top-sm left-sm">
+<span class="px-sm py-1 bg-secondary-fixed text-on-secondary-fixed text-label-sm font-label-sm rounded-sm">NEW</span>
+</div>
+<!-- Quick Actions -->
+<div class="action-buttons absolute inset-0 bg-primary/10 flex items-center justify-center gap-md opacity-0 transform translate-y-4 transition-all duration-300">
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors active:scale-90">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors active:scale-90">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Skincare</span>
+<h3 class="font-headline-md text-[18px] text-primary group-hover:text-secondary transition-colors">Azure Hydration Serum</h3>
+<p class="font-label-md text-label-md text-on-surface">₹1,250</p>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group product-card-hover relative flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container overflow-hidden rounded-lg mb-md">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="An elegant matte black lipstick tube with a golden rim, open to reveal a rich crimson red velvet texture. The scene is shot in a high-contrast style with deep navy shadows and soft blue ambient lighting on a marble surface. Luxury aesthetic, sharp focus on the lipstick texture, minimalist composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfvsoEfZ8MgsrgGhn1dNGGUSGbTh-kP-MFUdSANMdwxBKPVgLBF5XGRHTGNmDlGPqVTqkycxjJWzLB5OtWx8-YHW9Rhq4wCFXiAynRqDc4qiOqvU7_6jktTL-KUReYaCnFcAFR53drgMfUZDcVQXxmUqQYnvQ46lCcXef2V2PJ8lhd0ErRvbnqgSmWqXoqVHsvYCEQOdjpMaaJwIx0xEoiKSQ217PZUZN5pNZLSbx7J_Pwi8v3fUOKDWwZp4u82GLWihOZHZdnuWhj"/>
+<div class="action-buttons absolute inset-0 bg-primary/10 flex items-center justify-center gap-md opacity-0 transform translate-y-4 transition-all duration-300">
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Makeup</span>
+<h3 class="font-headline-md text-[18px] text-primary group-hover:text-secondary transition-colors">Velvet Matte Crimson</h3>
+<p class="font-label-md text-label-md text-on-surface">₹850</p>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group product-card-hover relative flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container overflow-hidden rounded-lg mb-md">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A sculptural perfume bottle made of heavy gradient blue glass, reflecting light like a sapphire. It sits on a pool of clear water with soft ripples, under a bright, ethereal sky-blue lighting. The mood is refreshing and luxury. Cinematic lighting, vast negative space, premium skincare brand vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ-_te4oG_Xa3ckrRC0cyvEJwfcc-lpEy0CDQmSAPJPjq9yd3BGxfJI3zOXquFbkyobAiejTkOCFUACeZ31aO5R2aLKQfi_4OmQ-JDutI7i2GTrJQRtUmyAeFM4_CibMZ5JhZc2Ufx8PWpfsE54-Qii1pBDBxW1bER7nc8-jlJ_WcXvxVotALquZ9HGYjSNllcOKEU-7NH_XHVkREMa4IDfu3Vjyepnx1UzZqQoULmQTVUHtyGajzkK-SFP19pKDd7bxGInUFQAp8W"/>
+<div class="absolute top-sm left-sm">
+<span class="px-sm py-1 bg-tertiary-fixed text-on-tertiary-fixed text-label-sm font-label-sm rounded-sm">ORGANIC</span>
+</div>
+<div class="action-buttons absolute inset-0 bg-primary/10 flex items-center justify-center gap-md opacity-0 transform translate-y-4 transition-all duration-300">
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Fragrance</span>
+<h3 class="font-headline-md text-[18px] text-primary group-hover:text-secondary transition-colors">L'Eau de Blue</h3>
+<p class="font-label-md text-label-md text-on-surface">₹1,950</p>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group product-card-hover relative flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container overflow-hidden rounded-lg mb-md">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A minimalist white ceramic jar with a dark navy lid, containing a rich, pearlescent facial cream. One scoop of cream is shown on a small silver spatula. Soft-focus background with hints of eucalyptus leaves. Bright, clean, clinical yet luxurious aesthetic. 8k resolution, commercial lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACLPVnVK9YkolnK-HHWEL6iepgQB_-sspVrOy5wKKBxoVzC12HetE8M6As0IeQhhbmzjID0xwxUtAr_har9WjccGzdbe0JsT8NXs1JE3QFNmSUS9zlyDUUtemN4hH-78ZoFBkRBfTRMZiLKc4ZaP2cEWYUHQIadI6V5xpzcDKFAh23qJ4LTq6Al1natvJyfzQY5bbyASryyfENHpaqtYYUIjj6h98PNApO-2rjuRme0fnY03pRQJo8hcgRcurJWNt0iahGFCZ5aA59"/>
+<div class="action-buttons absolute inset-0 bg-primary/10 flex items-center justify-center gap-md opacity-0 transform translate-y-4 transition-all duration-300">
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Skincare</span>
+<h3 class="font-headline-md text-[18px] text-primary group-hover:text-secondary transition-colors">Night Repair Balm</h3>
+<p class="font-label-md text-label-md text-on-surface">₹1,100</p>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group product-card-hover relative flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container overflow-hidden rounded-lg mb-md">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Close up of a metallic gold eyeshadow palette with various shades of shimmering blues and neutral taupes. The palette is resting on a piece of raw silk fabric. High-key lighting, soft shadows, extremely detailed texture of the powder. Modern luxury makeup branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzEE3U8f1O4ar-_4zPardpdWKbcwOsfvc3Vg7fpo3-ksOPeEVjiEFZvYf-UhIrbooW17EqUQ6JM2QE0sHUc8RqPYCDDO-j1ycKXoaP1Rn2mXfXmxjy_Exr-kfx3zpNJYxsh0OivlG1cNYZOXqAzqJy9HJvTOLiV1u1c1XMYMMKsqEcMeUaDiun28W-1GzWPGNazlojhsG_n9SMcR0mTI-trPoqBNppMaLbvTycqe1cvGaBxpQ4Bht2KcCGQEX6d_rpAGQPq8F_M0NM"/>
+<div class="action-buttons absolute inset-0 bg-primary/10 flex items-center justify-center gap-md opacity-0 transform translate-y-4 transition-all duration-300">
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Makeup</span>
+<h3 class="font-headline-md text-[18px] text-primary group-hover:text-secondary transition-colors">Celestial Eye Palette</h3>
+<p class="font-label-md text-label-md text-on-surface">₹1,450</p>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group product-card-hover relative flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container overflow-hidden rounded-lg mb-md">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A sleek frosted glass pump bottle containing a light blue cleansing oil. Floating bubbles and a fresh water splash in the background. The lighting is cool and airy, highlighting the purity of the product. Minimalism and glassmorphism elements. Soft blue and white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsvf-t8GdR3CJ5e_E7UWf13nA8ZXli5ufXhN1Q-rgtZWBzR0WoU7xovD2qPbUE_Fz8Dt-mThyZq5M79JI4kLTIOqU80mxRt6GHpp_UktRTtlAX3haJXsW-0h-nP03i300gNdn0A7SD78CoTILnLdkNxJQqGcM_BGoamhSBKucAaJ0-gZxq1i1rs1Zlm6E-K_QaM4P7ExNdokSAZ43ZD0E11YNBPa1BI3X9jbb74L-IAqPqqqNYBx_kot18iW0L84aFOvzbv4RVYP0L"/>
+<div class="action-buttons absolute inset-0 bg-primary/10 flex items-center justify-center gap-md opacity-0 transform translate-y-4 transition-all duration-300">
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Skincare</span>
+<h3 class="font-headline-md text-[18px] text-primary group-hover:text-secondary transition-colors">Deep Sea Cleanser</h3>
+<p class="font-label-md text-label-md text-on-surface">₹650</p>
+</div>
+</div>
+<!-- Product Card 7 -->
+<div class="group product-card-hover relative flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container overflow-hidden rounded-lg mb-md">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A set of premium makeup brushes with navy handles and soft white-to-blue ombre bristles. Arranged neatly on a textured white linen surface. Natural window light creating soft long shadows. Professional, clean, and aspirational luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeSP6FjuALeApmBW_H5LpLA4__nS17k77z8n52SPf6-zdmiqYp-7oJ8Qa1kAqDS4hgz7Zr3-7ClZZ0A0YWqXMa8RBER23dJ78qJUbt4315ydwaBbVcLeJUwQyoK6UCxFERwCirQ8_L9EFOtcXTA5tkIJ6I8kzU0QkdPmy_RTurM5fF1ltwAif4mY_CW3v58YglXIwpoassxvo8g7ieFlIkLSGJgpGjRFu8jz6TIGeOkZHLub3jg1Q37XKDTBnIHcAGAoR5pht93zR4"/>
+<div class="action-buttons absolute inset-0 bg-primary/10 flex items-center justify-center gap-md opacity-0 transform translate-y-4 transition-all duration-300">
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Makeup</span>
+<h3 class="font-headline-md text-[18px] text-primary group-hover:text-secondary transition-colors">Artistry Brush Set</h3>
+<p class="font-label-md text-label-md text-on-surface">₹1,800</p>
+</div>
+</div>
+<!-- Product Card 8 -->
+<div class="group product-card-hover relative flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container overflow-hidden rounded-lg mb-md">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A small, chic rollerball perfume vial with a gold cap and a blue floral pattern on the glass. Resting next to some dried lavender and blue cornflower petals. Soft, warm sunlight filtering through a sheer curtain. Evocative, delicate, and sophisticated mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQStqDBnah-Vigv8iFU3yaroDy_DYyK33wYtyubtemQ3Sbk6LPaUHFj9JZJz6bSFCZGHBLbFPfI39fqBiBx5zNuhfIddaX_3I3y3MMt1kS0SqVQ2ivT_XbFtIi4LkiRcL6Ba3HvK63iTO67YTv1Az1hQjsMXqKeQ9bj3UrGtuJ9ni8Rmi8700_42Cx43P6f6q5ijamdCrN3OvnAgekmtpL73xzoM-V_sGFMgPR3J2v2BrYzl97Tlhibm2IyK3ES7hxXX9wcunxOP6g"/>
+<div class="action-buttons absolute inset-0 bg-primary/10 flex items-center justify-center gap-md opacity-0 transform translate-y-4 transition-all duration-300">
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Fragrance</span>
+<h3 class="font-headline-md text-[18px] text-primary group-hover:text-secondary transition-colors">Midnight Mist Roll-on</h3>
+<p class="font-label-md text-label-md text-on-surface">₹450</p>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-xxl flex flex-col items-center gap-lg">
+<p class="font-label-sm text-label-sm text-outline">SHOWING 8 OF 42 PRODUCTS</p>
+<div class="w-48 h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="w-1/4 h-full bg-primary"></div>
+</div>
+<button class="px-xl py-md border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all active:scale-95">LOAD MORE</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface/90 dark:bg-surface-container-lowest/90 backdrop-blur-lg border-t border-outline-variant/30 py-sm pb-safe px-md flex justify-around items-center z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-bold transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-md text-label-md">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:text-secondary-container transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-md text-label-md">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:text-secondary-container transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-md text-label-md">Wishlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:text-secondary-container transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:text-secondary-container transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">person_outline</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<!-- Micro-interaction Scripts -->
+<script>
+        document.querySelectorAll('.product-card-hover').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential for adding small JS animations if needed
+            });
+        });
+
+        // Filter functionality simulation
+        const filterButtons = document.querySelectorAll('.flex.gap-md button');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary', 'shadow-md', 'shadow-primary/10');
+                    b.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
+                });
+                btn.classList.add('bg-primary', 'text-on-primary', 'shadow-md', 'shadow-primary/10');
+                btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blue Cosmetics - Auth</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Playfair+Display:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .auth-input {
+            border: none;
+            border-bottom: 1px solid #74777f;
+            background: transparent !important;
+            padding-left: 0;
+            padding-right: 0;
+            transition: all 0.3s ease;
+        }
+        .auth-input:focus {
+            outline: none;
+            box-shadow: none;
+            border-color: #4597fe;
+        }
+        .auth-input::placeholder {
+            color: #74777f;
+            font-size: 14px;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#6f88ad",
+                      "secondary-fixed-dim": "#a7c8ff",
+                      "on-background": "#191c1d",
+                      "on-primary-fixed": "#001c3a",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed": "#001f29",
+                      "on-primary-fixed-variant": "#2f486a",
+                      "surface-container": "#edeeef",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-surface-variant": "#43474e",
+                      "on-secondary-fixed": "#001b3b",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#001f3f",
+                      "on-secondary-container": "#002e5d",
+                      "background": "#f8f9fa",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#d9dadb",
+                      "surface-container-low": "#f3f4f5",
+                      "secondary-container": "#4597fe",
+                      "inverse-surface": "#2e3132",
+                      "primary": "#000613",
+                      "inverse-primary": "#afc8f0",
+                      "on-tertiary-container": "#2891b2",
+                      "surface-tint": "#476083",
+                      "surface-bright": "#f8f9fa",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#baeaff",
+                      "on-surface": "#191c1d",
+                      "on-error": "#ffffff",
+                      "tertiary-container": "#00222d",
+                      "surface-container-high": "#e7e8e9",
+                      "on-secondary-fixed-variant": "#004788",
+                      "inverse-on-surface": "#f0f1f2",
+                      "secondary": "#005eb2",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed-variant": "#004d62",
+                      "surface-variant": "#e1e3e4",
+                      "surface": "#f8f9fa",
+                      "outline-variant": "#c4c6cf",
+                      "primary-fixed-dim": "#afc8f0",
+                      "outline": "#74777f",
+                      "secondary-fixed": "#d5e3ff",
+                      "primary-fixed": "#d4e3ff",
+                      "tertiary": "#00070b",
+                      "tertiary-fixed-dim": "#76d2f6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xxl": "80px",
+                      "sm": "8px",
+                      "container-max": "1280px",
+                      "margin-mobile": "16px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "gutter": "24px",
+                      "unit": "4px",
+                      "xl": "48px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-lg-mobile": ["Playfair Display"],
+                      "headline-md": ["Playfair Display"],
+                      "headline-lg": ["Playfair Display"],
+                      "label-md": ["Inter"],
+                      "display-lg": ["Playfair Display"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Premium Animated Background -->
+<div class="fixed inset-0 z-0">
+
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-bright/80 via-transparent to-primary/5"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 min-h-screen flex items-center justify-center p-md md:p-xl">
+<div class="w-full max-w-[1000px] grid md:grid-cols-2 bg-surface-container-lowest/40 backdrop-blur-3xl rounded-xl overflow-hidden shadow-2xl shadow-primary/10 border border-white/20">
+<!-- Left Side: Visual/Branding -->
+<div class="hidden md:block relative h-full min-h-[600px] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-[10000ms] ease-linear hover:scale-100" data-alt="A macro cinematic shot of silky, pearlescent liquid foundation swirling with deep navy blue pigments and gold flecks. The lighting is ethereal and high-contrast, emphasizing the luxurious texture and luminosity. The composition is artistic and minimalist, reflecting a premium skincare and cosmetics brand identity with a cool, serene color palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCXLEuDaBiUrjmzH3UEiGqgLTxemuI_Rl7rMNWrJk9tFgd1KyuW8ZUPH1FlNKpOF3gXhm3AuoGxd3NMEcT-NbqCbcAIME_CnmKPBgRSH1EnP95YzBuJ1KJ2pd6rKyXAC7bSWAmm0h-0U7dDMJ-5jGGrRboi2LtrBc-ZSA-beaurPoorYmxvbu3YUpUDYxy_FuD08AP1hYiGVoYpExqIZ_8yFWzEudi0V1jxL05ayGJfe4KA4ZteU1eq5VcEDQ9r14g0UqKJz8Gjf1X1')"></div>
+<div class="absolute inset-0 bg-primary/20 backdrop-filter contrast-75"></div>
+<div class="absolute bottom-xl left-xl right-xl text-white">
+<h1 class="font-display-lg text-[48px] leading-tight mb-md">Science meets Indulgence.</h1>
+<p class="font-body-md text-body-md text-white/80 max-w-sm">Experience the blue standard in premium skincare, where rigorous research meets high-end botanical luxury.</p>
+</div>
+</div>
+<!-- Right Side: Auth Forms -->
+<div class="p-xl lg:p-xxl flex flex-col justify-center relative overflow-hidden">
+<!-- Login State -->
+<div class="fade-in space-y-xl" id="login-section">
+<header class="space-y-sm">
+<span class="font-label-md text-label-md text-secondary tracking-widest uppercase">Blue Cosmetics</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Welcome Back</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Sign in to access your skincare regimen.</p>
+</header>
+<form class="space-y-lg" onsubmit="event.preventDefault();">
+<div class="group relative">
+<label class="block font-label-md text-[11px] text-outline group-focus-within:text-secondary uppercase tracking-widest transition-colors">Email Address</label>
+<input class="w-full auth-input font-body-md text-body-md py-sm" placeholder="name@example.com" type="email"/>
+</div>
+<div class="group relative">
+<label class="block font-label-md text-[11px] text-outline group-focus-within:text-secondary uppercase tracking-widest transition-colors">Password</label>
+<input class="w-full auth-input font-body-md text-body-md py-sm" placeholder="••••••••" type="password"/>
+</div>
+<div class="flex items-center justify-between pt-sm">
+<label class="flex items-center gap-sm cursor-pointer">
+<input class="w-4 h-4 rounded border-outline text-secondary focus:ring-secondary/20" type="checkbox"/>
+<span class="font-label-md text-label-sm text-on-surface-variant">Remember me</span>
+</label>
+<a class="font-label-md text-label-sm text-secondary hover:underline decoration-secondary-container" href="#">Forgot password?</a>
+</div>
+<button class="w-full bg-primary text-on-primary py-md rounded-lg font-label-md text-label-md hover:bg-secondary active:scale-[0.98] transition-all duration-200 shadow-lg shadow-primary/10">
+                            Sign In
+                        </button>
+</form>
+<div class="flex flex-col gap-md pt-md">
+<button class="w-full border border-outline/30 text-on-surface py-md rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm hover:bg-surface-container-low transition-colors">
+<svg class="w-5 h-5" viewbox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"></path></svg>
+                            Continue with Google
+                        </button>
+<div class="flex items-center gap-sm py-md">
+<div class="flex-grow h-[1px] bg-outline/20"></div>
+<span class="font-label-md text-[10px] text-outline uppercase tracking-[0.2em]">or</span>
+<div class="flex-grow h-[1px] bg-outline/20"></div>
+</div>
+<div class="text-center space-y-md">
+<p class="font-body-md text-label-md text-on-surface-variant">
+                                Don't have an account? 
+                                <button class="text-secondary font-bold hover:underline" onclick="toggleAuth('signup')">Create Account</button>
+</p>
+<a class="inline-flex items-center gap-xs font-label-md text-label-sm text-outline-variant hover:text-secondary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+<span>Admin Login</span>
+<span class="material-symbols-outlined text-[16px] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Signup State (Hidden by default) -->
+<div class="hidden fade-in space-y-xl" id="signup-section">
+<header class="space-y-sm">
+<span class="font-label-md text-label-md text-secondary tracking-widest uppercase">Blue Cosmetics</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Join the Collective</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Start your personalized skincare journey today.</p>
+</header>
+<form class="space-y-lg" onsubmit="event.preventDefault();">
+<div class="grid grid-cols-2 gap-md">
+<div class="group relative">
+<label class="block font-label-md text-[11px] text-outline group-focus-within:text-secondary uppercase tracking-widest transition-colors">First Name</label>
+<input class="w-full auth-input font-body-md text-body-md py-sm" placeholder="John" type="text"/>
+</div>
+<div class="group relative">
+<label class="block font-label-md text-[11px] text-outline group-focus-within:text-secondary uppercase tracking-widest transition-colors">Last Name</label>
+<input class="w-full auth-input font-body-md text-body-md py-sm" placeholder="Doe" type="text"/>
+</div>
+</div>
+<div class="group relative">
+<label class="block font-label-md text-[11px] text-outline group-focus-within:text-secondary uppercase tracking-widest transition-colors">Email Address</label>
+<input class="w-full auth-input font-body-md text-body-md py-sm" placeholder="name@example.com" type="email"/>
+</div>
+<div class="group relative">
+<label class="block font-label-md text-[11px] text-outline group-focus-within:text-secondary uppercase tracking-widest transition-colors">Create Password</label>
+<input class="w-full auth-input font-body-md text-body-md py-sm" placeholder="••••••••" type="password"/>
+</div>
+<div class="pt-sm">
+<label class="flex items-start gap-sm cursor-pointer">
+<input class="mt-1 w-4 h-4 rounded border-outline text-secondary focus:ring-secondary/20" type="checkbox"/>
+<span class="font-label-md text-label-sm text-on-surface-variant leading-relaxed">I agree to the <a class="text-secondary underline decoration-secondary-container" href="#">Terms of Service</a> and <a class="text-secondary underline decoration-secondary-container" href="#">Privacy Policy</a>.</span>
+</label>
+</div>
+<button class="w-full bg-primary text-on-primary py-md rounded-lg font-label-md text-label-md hover:bg-secondary active:scale-[0.98] transition-all duration-200 shadow-lg shadow-primary/10">
+                            Create Account
+                        </button>
+</form>
+<div class="text-center pt-md">
+<p class="font-body-md text-label-md text-on-surface-variant">
+                            Already have an account? 
+                            <button class="text-secondary font-bold hover:underline" onclick="toggleAuth('login')">Log In</button>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Interactive Footer Elements -->
+<div class="fixed bottom-0 left-0 w-full p-md z-10 flex justify-between items-center pointer-events-none">
+<div class="font-label-md text-[10px] text-outline uppercase tracking-widest opacity-40">© 2024 BLUE SKINCARE GROUP</div>
+<div class="flex gap-md pointer-events-auto">
+<a class="text-outline hover:text-secondary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">help_outline</span></a>
+<a class="text-outline hover:text-secondary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">language</span></a>
+</div>
+</div>
+<script>
+        function toggleAuth(state) {
+            const loginSection = document.getElementById('login-section');
+            const signupSection = document.getElementById('signup-section');
+            
+            if (state === 'signup') {
+                loginSection.classList.add('hidden');
+                signupSection.classList.remove('hidden');
+            } else {
+                signupSection.classList.add('hidden');
+                loginSection.classList.remove('hidden');
+            }
+        }
+
+        // Simple mouse move parallax for background
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            const bg = document.querySelector('webgl-shader');
+            if (bg) {
+                bg.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
+            }
+        });
+    </script>
+</body></html>

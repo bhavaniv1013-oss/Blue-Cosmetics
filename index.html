@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue Cosmetics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand">
+          <img src="blue log.png" alt="Blue Cosmetics logo" />
+          <div>
+            <p class="eyebrow">Blue Cosmetics</p>
+            <h1>Beauty, refined</h1>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="pill action-pill" data-action="open-auth" data-mode="login">Login</button>
+          <button class="pill action-pill" data-action="open-auth" data-mode="signup">Sign up</button>
+          <button class="pill action-pill" data-action="open-admin">Admin</button>
+          <div class="pill">
+            <span id="wishlistCount">0</span>
+            Wishlist
+          </div>
+          <div class="pill">
+            <span id="cartCount">0</span>
+            Cart
+          </div>
+        </div>
+      </header>
+
+      <div id="toast" class="toast" aria-live="polite"></div>
+
+      <div id="authModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-card">
+          <button class="modal-close" data-action="close-modal" aria-label="Close">×</button>
+          <div class="modal-tabs">
+            <button class="modal-tab active" data-auth-tab="login">Login</button>
+            <button class="modal-tab" data-auth-tab="signup">Sign up</button>
+          </div>
+          <form class="auth-form">
+            <input id="signupName" class="hidden" type="text" placeholder="Full name" />
+            <input id="authEmail" type="email" placeholder="Email" />
+            <input id="authPassword" type="password" placeholder="Password" />
+            <input id="authConfirm" class="hidden" type="password" placeholder="Confirm password" />
+            <button class="primary-btn full" type="button" data-action="auth-submit">Continue</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="checkoutModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-card checkout-card">
+          <button class="modal-close" data-action="close-modal" aria-label="Close">×</button>
+          <div class="checkout-layout">
+            <div>
+              <p class="eyebrow">Checkout</p>
+              <h3>Delivery details</h3>
+              <form class="auth-form">
+                <input type="text" placeholder="Full name" />
+                <input type="text" placeholder="Address" />
+                <input type="text" placeholder="Phone number" />
+                <input type="text" placeholder="Card ending in 4242" />
+              </form>
+            </div>
+            <div class="summary-card">
+              <p class="eyebrow">Order summary</p>
+              <div id="checkoutSummary" class="checkout-summary"></div>
+              <div class="coupon-box">
+                <label for="couponCode">Coupon code</label>
+                <input id="couponCode" type="text" placeholder="Enter coupon" />
+                <button class="ghost-btn full" type="button" data-action="apply-coupon">Apply coupon</button>
+                <div class="coupon-offers">
+                  <button class="pill" type="button" data-action="apply-coupon" data-coupon="blue20">blue20 · 20% off</button>
+                  <button class="pill" type="button" data-action="apply-coupon" data-coupon="glow10">glow10 · 10% off</button>
+                  <button class="pill" type="button" data-action="apply-coupon" data-coupon="freegift">freegift · Free shipping</button>
+                  <button class="pill" type="button" data-action="apply-coupon" data-coupon="firstbuy">firstbuy · 15% off</button>
+                </div>
+              </div>
+              <div class="payment-options">
+                <label class="payment-option"><input type="radio" name="paymentMethod" value="gpay" checked /> Google Pay</label>
+                <label class="payment-option"><input type="radio" name="paymentMethod" value="cod" /> Cash on Delivery</label>
+              </div>
+              <div id="orderConfirmation" class="checkout-confirmation hidden">
+                <strong>Payment successful!</strong>
+                <p>Your order is confirmed and will be delivered shortly.</p>
+              </div>
+              <div class="summary-row">
+                <span>Total</span>
+                <strong id="checkoutTotal">₹0</strong>
+              </div>
+              <button class="primary-btn full" data-action="place-order">Place order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="rewardsModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-card">
+          <button class="modal-close" data-action="close-modal" aria-label="Close">×</button>
+          <p class="eyebrow">Rewards</p>
+          <h3>Your glow points</h3>
+          <div class="reward-box">
+            <strong>4,800</strong>
+            <p>Unlock free shipping and exclusive skincare drops.</p>
+          </div>
+          <button class="primary-btn full" data-action="close-modal">Close rewards</button>
+        </div>
+      </div>
+
+      <div id="adminModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-card admin-modal-card">
+          <button class="modal-close" data-action="close-modal" aria-label="Close">×</button>
+          <div class="admin-panel admin-login-panel">
+            <p class="eyebrow">Admin & security</p>
+            <h3>Secure dashboard</h3>
+            <p class="hint-text">Hint: blueadmin2026</p>
+            <div class="auth-form admin-login-form">
+              <input id="adminPassword" type="password" placeholder="Enter admin password" />
+              <button class="primary-btn full" type="button" data-action="auth-submit">Enter secure area</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <section id="home" class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">New season essentials</p>
+            <h2>Blue Cosmetics brings skincare, color, and glow into one luxurious ritual.</h2>
+            <p>
+              Discover high-performance formulas designed for modern beauty lovers who want calm, confidence, and a polished finish.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-btn" href="#shop">Shop collection</a>
+              <a class="ghost-btn" href="#about">Why Blue?</a>
+            </div>
+            <div class="hero-stats">
+              <div>
+                <strong>4.9/5</strong>
+                <span>Rated by +12k customers</span>
+              </div>
+              <div>
+                <strong>24h</strong>
+                <span>Fast delivery on premium picks</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="hero-card-image"></div>
+            <div class="hero-card-content">
+              <p class="eyebrow">Editor’s pick</p>
+              <h3>Midnight Dew Serum</h3>
+              <p>Plump, brighten, and protect with a silky blue botanicals blend.</p>
+              <div class="price-row">
+                <span>From ₹2,800</span>
+                <button class="mini-btn" data-action="cart" data-id="1">Add to bag</button>
+              </div>
+              <button class="ghost-btn full" data-action="open-editor-pick">View editor’s pick</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="shop" class="shop-section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Featured picks</p>
+              <h3>Build your daily glow</h3>
+            </div>
+            <div class="brand-strip">
+              <span class="brand-pill">L'Oréal</span>
+              <span class="brand-pill">NARS</span>
+              <span class="brand-pill">The Body Shop</span>
+              <span class="brand-pill">Offer: 20% Off</span>
+            </div>
+            <div class="controls">
+              <input id="searchInput" type="text" placeholder="Search products" />
+              <div class="price-range">
+                <label>₹<input id="minPrice" type="number" min="300" max="3000" step="50" value="300" /></label>
+                <span>to</span>
+                <label>₹<input id="maxPrice" type="number" min="300" max="3000" step="50" value="3000" /></label>
+              </div>
+              <select id="sortSelect">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="filters" class="filters"></div>
+          <div class="catalog-highlights">
+            <div class="highlight-card">
+              <strong>Brands</strong>
+              <p>Premium skincare, makeup and fragrance selections.</p>
+            </div>
+            <div class="highlight-card">
+              <strong>Offers</strong>
+              <p>Free shipping on orders above ₹2,000.</p>
+            </div>
+            <div class="highlight-card">
+              <strong>Best Sellers</strong>
+              <p>Trending essentials loved by beauty lovers.</p>
+            </div>
+          </div>
+          <p id="resultsCount" class="results-count"></p>
+          <div id="productsGrid" class="products-grid"></div>
+        </section>
+
+        <section id="about" class="bottom-grid">
+          <div class="cart-card">
+            <div class="section-heading compact">
+              <div>
+                <p class="eyebrow">Your ritual bag</p>
+                <h3>Ready to checkout</h3>
+              </div>
+            </div>
+            <div id="cartList" class="cart-list"></div>
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <strong id="subtotal">₹0</strong>
+            </div>
+            <button class="ghost-btn full" data-action="clear-cart">Clear bag</button>
+            <button class="primary-btn full" data-action="open-checkout">Proceed to checkout</button>
+          </div>
+
+          <div class="info-card">
+            <p class="eyebrow">Why customers love Blue</p>
+            <ul>
+              <li>Botanical ingredients with clinical performance.</li>
+              <li>Soft, modern packaging that feels luxurious at home.</li>
+              <li>Personalized routines for skincare, makeup, and fragrance.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="profile" class="profile-card">
+          <div class="profile-card-content">
+            <div>
+              <p class="eyebrow">Your profile</p>
+              <h3>Welcome back, Aanya</h3>
+              <p>Glow points 4,800 • Free shipping over ₹2,000</p>
+            </div>
+            <button class="primary-btn" data-action="open-rewards">View rewards</button>
+          </div>
+        </section>
+      </main>
+
+      <section id="adminSection" class="admin-dashboard-panel hidden">
+        <div class="section-heading admin-panel-heading">
+          <div>
+            <p class="eyebrow">Admin Dashboard</p>
+            <h3>Blue Cosmetics Control Center</h3>
+          </div>
+          <button class="primary-btn logout-btn" data-action="admin-logout">Logout</button>
+        </div>
+        <div class="admin-tabs">
+          <button class="admin-tab active" data-admin-tab="users">Users</button>
+          <button class="admin-tab" data-admin-tab="products">Products</button>
+          <button class="admin-tab" data-admin-tab="orders">Orders</button>
+        </div>
+        <div id="adminTabContent" class="admin-tab-content"></div>
+      </section>
+    </div>
+
+    <nav class="bottom-nav" aria-label="Bottom navigation">
+      <button class="nav-item active" data-target="home">
+        <span>⌂</span>
+        <small>Home</small>
+      </button>
+      <button class="nav-item" data-target="shop">
+        <span>◫</span>
+        <small>Shop</small>
+      </button>
+      <button class="nav-item" data-target="about">
+        <span>👜</span>
+        <small>Bag</small>
+      </button>
+      <button class="nav-item" data-target="profile">
+        <span>◔</span>
+        <small>Profile</small>
+      </button>
+    </nav>
+
+    <script src="script.js"></script>
+  </body>
+</html>

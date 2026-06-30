@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review Order - BLUE Premium Skincare</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#6f88ad",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "on-background": "#191c1d",
+                    "on-primary-fixed": "#001c3a",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#001f29",
+                    "on-primary-fixed-variant": "#2f486a",
+                    "surface-container": "#edeeef",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-surface-variant": "#43474e",
+                    "on-secondary-fixed": "#001b3b",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#001f3f",
+                    "on-secondary-container": "#002e5d",
+                    "background": "#f8f9fa",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d9dadb",
+                    "surface-container-low": "#f3f4f5",
+                    "secondary-container": "#4597fe",
+                    "inverse-surface": "#2e3132",
+                    "primary": "#000613",
+                    "inverse-primary": "#afc8f0",
+                    "on-tertiary-container": "#2891b2",
+                    "surface-tint": "#476083",
+                    "surface-bright": "#f8f9fa",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#baeaff",
+                    "on-surface": "#191c1d",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#00222d",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-fixed-variant": "#004788",
+                    "inverse-on-surface": "#f0f1f2",
+                    "secondary": "#005eb2",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#004d62",
+                    "surface-variant": "#e1e3e4",
+                    "surface": "#f8f9fa",
+                    "outline-variant": "#c4c6cf",
+                    "primary-fixed-dim": "#afc8f0",
+                    "outline": "#74777f",
+                    "secondary-fixed": "#d5e3ff",
+                    "primary-fixed": "#d4e3ff",
+                    "tertiary": "#00070b",
+                    "tertiary-fixed-dim": "#76d2f6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xxl": "80px",
+                    "sm": "8px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "gutter": "24px",
+                    "unit": "4px",
+                    "xl": "48px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Playfair Display"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-effect {
+            background: rgba(248, 249, 250, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .order-summary-card {
+            box-shadow: 0px 4px 20px rgba(0, 94, 178, 0.04);
+        }
+        .input-line {
+            border: none;
+            border-bottom: 1px solid #74777f;
+            background: transparent;
+            border-radius: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .input-line:focus {
+            outline: none;
+            box-shadow: none;
+            border-bottom-color: #4597fe;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8f9fa;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c4c6cf;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-sm shadow-secondary/5 h-16">
+<div class="flex justify-between items-center px-md h-full w-full max-w-container-max mx-auto">
+<button class="text-secondary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md tracking-widest text-primary">BLUE</h1>
+<button class="text-secondary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-0">
+<div class="max-w-container-max mx-auto md:grid md:grid-cols-12 md:gap-gutter">
+<!-- Left Column: Order Content -->
+<div class="md:col-span-7 space-y-xl">
+<!-- Page Title -->
+<section>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-sm">Review Your Order</h2>
+<p class="text-on-surface-variant font-body-md">Confirm your details and complete the purchase.</p>
+</section>
+<!-- Delivery Address Section -->
+<section class="bg-surface-container-lowest p-lg rounded-xl order-summary-card">
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-primary">Delivery Address</h3>
+</div>
+<button class="text-secondary font-label-md hover:underline decoration-secondary">Edit</button>
+</div>
+<div class="space-y-xs">
+<p class="font-body-lg text-on-surface font-semibold">Ananya Sharma</p>
+<p class="text-on-surface-variant font-body-md">A-402, Skyline Residency, Outer Ring Road</p>
+<p class="text-on-surface-variant font-body-md">Whitefield, Bengaluru, Karnataka 560066</p>
+<p class="text-on-surface-variant font-body-md">+91 98765 43210</p>
+</div>
+</section>
+<!-- Payment Method Section -->
+<section class="bg-surface-container-lowest p-lg rounded-xl order-summary-card">
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">payments</span>
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-primary">Payment Method</h3>
+</div>
+<button class="text-secondary font-label-md hover:underline decoration-secondary">Change</button>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-12 h-8 bg-surface-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">credit_card</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-medium">Visa ending in 4242</p>
+<p class="text-on-surface-variant text-label-sm">Expires 12/26</p>
+</div>
+</div>
+</section>
+<!-- Order Items Breakdown -->
+<section class="space-y-md">
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-primary px-sm">Items in Cart (2)</h3>
+<div class="space-y-sm">
+<!-- Item 1 -->
+<div class="flex gap-md bg-surface-container-low p-md rounded-xl">
+<div class="w-20 h-20 bg-surface-container-highest rounded-lg flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A premium minimalist skincare product bottle with clean typography, placed on a marble surface with soft, directional lighting creating elegant shadows. The bottle is a deep navy blue glass with a minimalist white label, reflecting a high-end luxury cosmetic aesthetic. Background is a soft cream with a touch of electric blue glow from a hidden light source." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdxeKc3r9gf1adyzrzzEfTmTr52RzVon6tmn85-kcTXq2tDu4XVuGiaoQXRWwvVkl44Uu-xMA7pgbBf5PQOCpaSPpSWc9nDxUt_hGn-Un9MWDWxcS5ET_294d0y0cPT4ROb6TcIlRLAFlH3iOludgGKY53y7mZA-Y2Fem87R4xP2qpziYn2OoQlY7OW4Teu3tB0f7nXWS0_j3rdihJX6kbXqRSSjJgLSJe-4RZUX3ltEogfLbqnuXxqyMGemJ44hsyA6mpqLSHSQIW"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-xs">
+<div>
+<h4 class="font-body-md text-on-surface font-semibold">Deep Hydration Serum</h4>
+<p class="text-label-sm text-on-surface-variant">30ml • Hyaluronic Acid + B5</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-label-sm text-on-surface-variant">Qty: 1</span>
+<span class="font-label-md text-on-surface">₹3,450.00</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-md bg-surface-container-low p-md rounded-xl">
+<div class="w-20 h-20 bg-surface-container-highest rounded-lg flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A luxury cosmetic cream jar in a minimalist white container with a gold-leaf underline accent. The jar is set against a serene, sky-blue background with soft, diffused lighting that evokes a sense of freshness and purity. The scene is shot in a professional studio setting with high-key lighting, maintaining a modern and clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhkEYRFj-_g9qM1tVrLX2WL1HGEZ1mQt9csN1Pr-4cYWDCmS5yqKj_HW6LOL-wwTAh8KAqyeFThRp6ifJI5E2liRX9vSYfsVGFHCQ7pRU5f2gBUtpxSGeI6-taykDDHI5oS8yKjAHrYIMEdvMr-4SzFTs4a0csXWErixjBGQ2NLy88unLj06pNBatcp7P9EPJVMm24zOqY9z2c-vXlmD94KF4l0MWgyfgaYUsclubKPV1S2nvkmP-P1Tx0hNZSb92WU5_l3oAhkUy7"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-xs">
+<div>
+<h4 class="font-body-md text-on-surface font-semibold">Restorative Night Cream</h4>
+<p class="text-label-sm text-on-surface-variant">50g • Peptides + Ceramides</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-label-sm text-on-surface-variant">Qty: 1</span>
+<span class="font-label-md text-on-surface">₹4,200.00</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Calculation & Sticky Total -->
+<aside class="mt-xl md:mt-0 md:col-span-5">
+<div class="sticky top-24 space-y-lg">
+<div class="bg-surface-container-highest p-lg rounded-xl order-summary-card border border-outline-variant/20">
+<h3 class="font-headline-md text-headline-md text-primary mb-lg">Order Summary</h3>
+<div class="space-y-md border-b border-outline-variant/30 pb-lg">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-body-md">Subtotal</span>
+<span class="font-body-md">₹7,650.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-body-md">Shipping</span>
+<span class="font-body-md text-secondary font-medium">FREE</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-body-md">Estimated Tax (GST 18%)</span>
+<span class="font-body-md">₹1,377.00</span>
+</div>
+</div>
+<div class="pt-lg pb-md flex justify-between items-baseline">
+<span class="font-headline-md text-primary font-bold">Total</span>
+<div class="text-right">
+<span class="font-headline-md text-primary font-bold">₹9,027.00</span>
+<p class="text-label-sm text-on-surface-variant">All inclusive of taxes</p>
+</div>
+</div>
+<!-- Promo Code -->
+<div class="mt-md">
+<label class="text-label-sm uppercase tracking-widest text-on-surface-variant block mb-xs">Promo Code</label>
+<div class="flex gap-sm">
+<input class="input-line flex-grow font-body-md text-on-surface py-2" placeholder="Enter code" type="text"/>
+<button class="font-label-md text-secondary hover:text-primary transition-colors">Apply</button>
+</div>
+</div>
+</div>
+<!-- Place Order Button Container -->
+<div class="bg-white p-4 md:p-0 md:bg-transparent rounded-xl">
+<button class="w-full bg-primary text-on-primary py-lg rounded-full font-label-md uppercase tracking-[0.2em] shadow-lg shadow-primary/20 hover:bg-secondary transition-all active:scale-[0.98] duration-200 group flex items-center justify-center gap-md" id="placeOrderBtn">
+<span>Place Order</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<p class="text-center text-label-sm text-on-surface-variant mt-md flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                            Secure encrypted checkout
+                        </p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-lg flex justify-around items-center py-sm pb-safe px-md border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] z-50">
+<a class="flex flex-col items-center justify-center text-outline transition-colors hover:text-secondary-container" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-label-md font-label-md">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-colors hover:text-secondary-container" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-label-md font-label-md">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-colors hover:text-secondary-container" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-label-md font-label-md">Wishlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary font-bold" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-md font-label-md">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline transition-colors hover:text-secondary-container" href="#">
+<span class="material-symbols-outlined">person_outline</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+</nav>
+<!-- Success Feedback Overlay (Hidden by default) -->
+<div class="fixed inset-0 bg-primary/95 backdrop-blur-md z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500" id="successOverlay">
+<div class="text-center p-xl">
+<div class="w-24 h-24 bg-secondary-container rounded-full flex items-center justify-center mx-auto mb-lg scale-50 transition-transform duration-700" id="successIcon">
+<span class="material-symbols-outlined text-on-secondary-container text-display-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-display-lg text-white mb-md">Order Confirmed</h2>
+<p class="text-secondary-fixed-dim font-body-lg max-w-sm mx-auto mb-xl">Your journey to radiant skin has begun. We've sent a confirmation email to ananya@example.com</p>
+<button class="bg-white text-primary px-xl py-md rounded-full font-label-md uppercase tracking-widest hover:bg-secondary-fixed transition-colors" onclick="window.location.reload()">Track Order</button>
+</div>
+</div>
+<script>
+        // Micro-interaction for Place Order button
+        const placeOrderBtn = document.getElementById('placeOrderBtn');
+        const successOverlay = document.getElementById('successOverlay');
+        const successIcon = document.getElementById('successIcon');
+
+        placeOrderBtn.addEventListener('click', () => {
+            placeOrderBtn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Processing...</span>
+            `;
+            placeOrderBtn.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                successOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    successIcon.classList.remove('scale-50');
+                    successIcon.classList.add('scale-100');
+                }, 100);
+            }, 1800);
+        });
+
+        // Sticky Header on Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-white/95', 'shadow-md');
+                header.classList.remove('bg-surface/80');
+            } else {
+                header.classList.remove('bg-white/95', 'shadow-md');
+                header.classList.add('bg-surface/80');
+            }
+        });
+    </script>
+</body></html>

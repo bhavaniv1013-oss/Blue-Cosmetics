@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wishlist | BLUE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .item-row:hover .action-buttons {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (max-width: 768px) {
+            .action-buttons {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#6f88ad",
+                        "secondary-fixed-dim": "#a7c8ff",
+                        "on-background": "#191c1d",
+                        "on-primary-fixed": "#001c3a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#001f29",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "surface-container": "#edeeef",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-surface-variant": "#43474e",
+                        "on-secondary-fixed": "#001b3b",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#001f3f",
+                        "on-secondary-container": "#002e5d",
+                        "background": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-container": "#4597fe",
+                        "inverse-surface": "#2e3132",
+                        "primary": "#000613",
+                        "inverse-primary": "#afc8f0",
+                        "on-tertiary-container": "#2891b2",
+                        "surface-tint": "#476083",
+                        "surface-bright": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#baeaff",
+                        "on-surface": "#191c1d",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#00222d",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed-variant": "#004788",
+                        "inverse-on-surface": "#f0f1f2",
+                        "secondary": "#005eb2",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#004d62",
+                        "surface-variant": "#e1e3e4",
+                        "surface": "#f8f9fa",
+                        "outline-variant": "#c4c6cf",
+                        "primary-fixed-dim": "#afc8f0",
+                        "outline": "#74777f",
+                        "secondary-fixed": "#d5e3ff",
+                        "primary-fixed": "#d4e3ff",
+                        "tertiary": "#00070b",
+                        "tertiary-fixed-dim": "#76d2f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xxl": "80px",
+                        "sm": "8px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "xl": "48px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-sm shadow-secondary/5">
+<div class="flex justify-between items-center px-md h-16 w-full max-w-container-max mx-auto">
+<button class="text-secondary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md tracking-widest text-primary">BLUE</h1>
+<button class="text-secondary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-xxl pb-xxl px-margin-mobile md:px-0 max-w-4xl mx-auto min-h-screen">
+<!-- Wishlist Header -->
+<section class="mt-xl mb-xl text-center md:text-left">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-sm">Your Wishlist</h2>
+<p class="font-label-md text-label-md text-outline tracking-wider">4 ITEMS SAVED</p>
+<div class="h-px w-24 bg-secondary-container mt-md mx-auto md:mx-0"></div>
+</section>
+<!-- Items Grid/List -->
+<div class="space-y-xl">
+<!-- Item 1 -->
+<div class="item-row group flex flex-col md:flex-row gap-lg items-center border-b border-outline-variant/30 pb-lg">
+<div class="w-full md:w-48 h-64 md:h-48 bg-surface-container-low overflow-hidden rounded-lg shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A luxury skincare bottle made of frosted deep blue glass, reflecting soft morning light in a minimalist marble bathroom. The aesthetic is ultra-clean with cool tones and high-end cosmetic styling. The bottle is positioned centrally against a bright, airy background, evoking a sense of premium purity and clinical efficacy. Minimalist typography is barely visible on the glass surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBca_ZitPJzh8I1qDnnf5o-p-pby7YhaJBc-0v61OXs9InroaMP5EhDMT2Am0jJiTgzWzovZT0eNyFsPCYbords6KgveGYadUlgLV0zGq38aow9bcCoPscAHsyxOaki_PXy-lvktQ5aZ-iYdnOaviXiZL2CFR-MGqMEa-ULgO_YDf9dIWR7ntgXQU-VpZwzuV29OtifQ3hYboa4EbktLuhJqQYL_m6RJyJ87ac1dVgA8teNKyIYJIntywC9c1j2sQMmq5BWwRnPEZvv"/>
+</div>
+<div class="flex-grow text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-baseline md:gap-sm justify-center md:justify-start">
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Celestial Serum</h3>
+<span class="font-label-sm text-label-sm bg-secondary-container/10 text-secondary px-2 py-0.5 rounded-full inline-block w-fit mx-auto md:mx-0 mb-2">RESTOCKING SOON</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-md max-w-md">A concentrated blend of deep-sea minerals and hyaluronic acid for luminous skin rejuvenation.</p>
+<p class="font-label-md text-label-md text-secondary font-bold">$148.00</p>
+</div>
+<div class="action-buttons flex flex-row md:flex-col gap-sm w-full md:w-auto transition-all duration-300">
+<button class="flex-1 md:w-40 bg-primary text-on-primary py-3 px-lg font-label-md text-label-md hover:bg-secondary active:scale-95 transition-all">
+                        MOVE TO CART
+                    </button>
+<button class="flex-1 md:w-40 border border-outline text-outline py-3 px-lg font-label-md text-label-md hover:border-error hover:text-error active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">close</span> REMOVE
+                    </button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="item-row group flex flex-col md:flex-row gap-lg items-center border-b border-outline-variant/30 pb-lg">
+<div class="w-full md:w-48 h-64 md:h-48 bg-surface-container-low overflow-hidden rounded-lg shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close-up of a premium moisturizing cream in a sleek white porcelain jar with a silver lid. The jar sits on a reflective surface of water with soft ripples. The lighting is bright and ethereal, highlighting the luxurious texture of the cream. The overall color palette is a sophisticated blend of white, sky blue, and shimmering silver, capturing a clean and modern luxury feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBGbP0lyma_EagKoWo55Uie8UdcWcEJHrIXlImzjWLSTkmjl-9-nzbJPgtgI6QWxklGztyEu-Kr0bFOGk-7zQ7Al4O9hN4OwXoqgQD66xg-WYvrD36pn6a5Wdt8fX4XznlKGnZkwm25lLoB5ZlKaKDN_B_erEjNazaYy4lki6TUvYOgLtFFRnVDdw-tvQJ5H-a-WONrlDTKzx9U5S7Og3u_jokFOSV-o37ewdfPYC4RwcTh69Fl9u8VKU79N13dPMWL-xruPLtToFy"/>
+</div>
+<div class="flex-grow text-center md:text-left">
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Arctic Moisture Balm</h3>
+<p class="font-body-md text-on-surface-variant mb-md max-w-md">Intense hydration lock with plant-derived squalane and glacial water essence.</p>
+<p class="font-label-md text-label-md text-secondary font-bold">$85.00</p>
+</div>
+<div class="action-buttons flex flex-row md:flex-col gap-sm w-full md:w-auto transition-all duration-300">
+<button class="flex-1 md:w-40 bg-primary text-on-primary py-3 px-lg font-label-md text-label-md hover:bg-secondary active:scale-95 transition-all">
+                        MOVE TO CART
+                    </button>
+<button class="flex-1 md:w-40 border border-outline text-outline py-3 px-lg font-label-md text-label-md hover:border-error hover:text-error active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">close</span> REMOVE
+                    </button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="item-row group flex flex-col md:flex-row gap-lg items-center border-b border-outline-variant/30 pb-lg">
+<div class="w-full md:w-48 h-64 md:h-48 bg-surface-container-low overflow-hidden rounded-lg shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A tall, slender blue glass bottle of luxury facial oil placed on a bed of fresh, dew-covered botanical leaves. Soft sunlight filters through glass, creating beautiful refractions and long shadows. The style is botanical minimalism, focusing on natural ingredients and premium science. Deep navy and emerald tones dominate the palette, presenting an authoritative yet refreshing luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrHtm7FEZxoUIn8JkgsqkOCt0aEqYhQ64fZXREv1j6n9sAN2A6bp2RvbGWfn4E38YvSNwkkfpQ51aRWrRjN-_AQQNChJo7Piqches90wlGkIUuuBjMoiEn3X1aRYseLyLsxB8TE2PdYi4N-hB1-6pdLfVvO1FBXmQPf5IcplgCaHL8Ekm-Qa3icZOX-FbiTJVuDWo_JP_7NzwbrOWxh2rwlzs1KRbAVVjI0r2sOxtdlU7hIRIyNlluuIJaM28CLcTLPgGj3Cku2AqP"/>
+</div>
+<div class="flex-grow text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-baseline md:gap-sm justify-center md:justify-start">
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Botanical Elixir</h3>
+<span class="font-label-sm text-label-sm bg-tertiary-fixed-dim/20 text-on-tertiary-container px-2 py-0.5 rounded-full inline-block w-fit mx-auto md:mx-0 mb-2">NEW</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-md max-w-md">24-hour antioxidant defense powered by cold-pressed rare botanical extracts.</p>
+<p class="font-label-md text-label-md text-secondary font-bold">$112.00</p>
+</div>
+<div class="action-buttons flex flex-row md:flex-col gap-sm w-full md:w-auto transition-all duration-300">
+<button class="flex-1 md:w-40 bg-primary text-on-primary py-3 px-lg font-label-md text-label-md hover:bg-secondary active:scale-95 transition-all">
+                        MOVE TO CART
+                    </button>
+<button class="flex-1 md:w-40 border border-outline text-outline py-3 px-lg font-label-md text-label-md hover:border-error hover:text-error active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">close</span> REMOVE
+                    </button>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="item-row group flex flex-col md:flex-row gap-lg items-center border-b border-outline-variant/30 pb-lg">
+<div class="w-full md:w-48 h-64 md:h-48 bg-surface-container-low overflow-hidden rounded-lg shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A heavy, square-based glass bottle containing a clear toner with floating silver-blue spheres. It stands on a minimalist white pedestal in a space with vast negative space. The lighting is cool-toned and architectural, emphasizing the science-backed luxury nature of the product. Sophisticated glassmorphism effects are present in the background. The mood is serene, clear, and high-end clinical." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBoosJAeCgzNN8qxqTOEfCJwDne1mbPwR12WhmHdGr6JNo7yjG1nKtbMaWuhI4NKma59-6FNeW3SxbnCDDHiUCgE33qMIx3VDZZ9n5NEnv8HDuIQneipd9YM_5ggHE9hL8Qs5mjzyKSAoHGiqpZbcGQtAjyL39nkAVHt9-mMbRE3HmAlJvo18rZ2Rwhn2mZhb0jrFV5lEdhtG0xSrarunCnfm--Z5_BsvMTKzosdJG-go2GFXy0NZHlW215Pxl7p8KFnlHGvDuPJmv"/>
+</div>
+<div class="flex-grow text-center md:text-left">
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Hydra-Sphere Toner</h3>
+<p class="font-body-md text-on-surface-variant mb-md max-w-md">Micro-encapsulated hydration pearls that burst on contact for instant skin prep.</p>
+<p class="font-label-md text-label-md text-secondary font-bold">$62.00</p>
+</div>
+<div class="action-buttons flex flex-row md:flex-col gap-sm w-full md:w-auto transition-all duration-300">
+<button class="flex-1 md:w-40 bg-primary text-on-primary py-3 px-lg font-label-md text-label-md hover:bg-secondary active:scale-95 transition-all">
+                        MOVE TO CART
+                    </button>
+<button class="flex-1 md:w-40 border border-outline text-outline py-3 px-lg font-label-md text-label-md hover:border-error hover:text-error active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">close</span> REMOVE
+                    </button>
+</div>
+</div>
+</div>
+<!-- Empty State Prompt (Hidden) -->
+<div class="hidden flex-col items-center justify-center text-center py-xxl" id="empty-state">
+<span class="material-symbols-outlined text-6xl text-outline-variant mb-lg">favorite_border</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-sm">Your Wishlist is Empty</h3>
+<p class="font-body-md text-on-surface-variant mb-xl">Explore our catalog and save your favorite skincare rituals.</p>
+<button class="bg-primary text-on-primary py-4 px-xl font-label-md text-label-md uppercase tracking-widest hover:bg-secondary transition-all">
+                BROWSE COLLECTION
+            </button>
+</div>
+<!-- Summary / Total Action -->
+<div class="mt-xl pt-xl flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="text-center md:text-left">
+<p class="font-body-md text-on-surface-variant">Estimated Wishlist Value</p>
+<p class="font-headline-md text-headline-md text-primary">$407.00</p>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary py-4 px-xxl font-label-md text-label-md uppercase tracking-widest hover:bg-secondary active:scale-95 transition-all flex items-center justify-center gap-3">
+                ADD ALL TO BAG <span class="material-symbols-outlined">trending_flat</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar (Visible on Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-lg border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] z-50 flex justify-around items-center py-sm pb-safe px-md">
+<a class="flex flex-col items-center justify-center text-outline hover:text-secondary-container transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-md text-[10px] mt-1">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:text-secondary-container transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-md text-[10px] mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary font-bold active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-label-md text-[10px] mt-1">Wishlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:text-secondary-container transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-[10px] mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:text-secondary-container transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">person_outline</span>
+<span class="font-label-md text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for removing items
+        document.querySelectorAll('.item-row button').forEach(btn => {
+            if(btn.innerText.includes('REMOVE')) {
+                btn.addEventListener('click', function() {
+                    const row = this.closest('.item-row');
+                    row.style.opacity = '0';
+                    row.style.transform = 'translateX(20px)';
+                    setTimeout(() => {
+                        row.remove();
+                        // Check if list is empty
+                        if(document.querySelectorAll('.item-row').length === 0) {
+                            document.getElementById('empty-state').classList.remove('hidden');
+                            document.getElementById('empty-state').classList.add('flex');
+                        }
+                    }, 300);
+                });
+            }
+        });
+    </script>
+</body></html>
